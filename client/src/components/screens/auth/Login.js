@@ -16,7 +16,7 @@ function Login() {
   const submitHandler = async (e) => {
     e.preventDefault()
     try{
-      const response = await fetch("/login", {
+      const response = await fetch("/users/login", {
         method: 'POST',
         body: JSON.stringify({email, password}),
         headers: {'Content-Type': 'application/json'}
@@ -24,9 +24,10 @@ function Login() {
       const data = await response.json()
       console.log('user login',data)
       localStorage.setItem("token", data.token)
+      localStorage.setItem("user", data.user)
       userStateDispatch({type: "USER", payload: data.user})
       setIsLoggedIn(true)
-      history.pushState('/')
+      history.push('/')
     }catch(e){
       console.log(e)
     }

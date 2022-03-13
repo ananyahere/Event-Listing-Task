@@ -32,13 +32,13 @@ function Events() {
   const [APIdata, setAPIdata] = useState([])
 
   useEffect(async () => {
-    const response = fetch("/events", {
+    const response = await fetch("/events", {
       method: "GET",
       headers: {
         "Authorization":"Bearer "+localStorage.getItem("token")
       }
     })
-    const data = response.json()
+    const data = await response.json()
     setAPIdata(data)
   }, [])
 

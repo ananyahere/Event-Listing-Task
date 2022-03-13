@@ -17,7 +17,7 @@ function Signup() {
   const submitHandler = async (e) => {
     e.preventDefault()
     try{
-      const response = await fetch("/signup", {
+      const response = await fetch("/users/signup", {
         method: 'POST',
         body: JSON.stringify({email, password, companyName}),
         headers: {'Content-Type': 'application/json'}
@@ -28,7 +28,7 @@ function Signup() {
       localStorage.setItem("token", data.token)
       userStateDispatch({type: "USER", payload: data.user})
       setIsLoggedIn(true)
-      history.pushState('/')
+      history.push('/')
     }catch(e){
       console.log(e)
     }
