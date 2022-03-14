@@ -22,9 +22,8 @@ function Login() {
         headers: {'Content-Type': 'application/json'}
       })
       const data = await response.json()
-      console.log('user login',data)
       localStorage.setItem("token", data.token)
-      localStorage.setItem("user", data.user)
+      localStorage.setItem("user", JSON.stringify(data.user))
       userStateDispatch({type: "USER", payload: data.user})
       setIsLoggedIn(true)
       history.push('/')

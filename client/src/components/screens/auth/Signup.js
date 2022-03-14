@@ -25,7 +25,7 @@ function Signup() {
       const data = await response.json()
       console.log('user signup',data)
       localStorage.setItem("token", data.token)
-      localStorage.setItem("token", data.token)
+      localStorage.setItem("user", JSON.stringify(data.user))
       userStateDispatch({type: "USER", payload: data.user})
       setIsLoggedIn(true)
       history.push('/')

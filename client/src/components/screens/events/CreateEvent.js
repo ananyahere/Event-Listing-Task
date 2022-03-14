@@ -5,10 +5,10 @@ function CreateEvent() {
   const [desc, setDesc] = useState('')
   const [duration, setDuration] = useState(0)
   const [capacity, setCapacity] = useState(0)
-  const [doorTime, setDoorTime] = useState()
-  const [endTime, setEndTime] = useState()
+  const [doorTime, setDoorTime] = useState('')
+  const [endTime, setEndTime] = useState('')
   const [location, setLocation] = useState('')
-  const [isFree, setIsFree] = useState(false)
+  const [isFree, setIsFree] = useState("")
   const[eventStatus, setEventStatus] = useState('')
 
   const submitHandler = async (e) => {
@@ -28,11 +28,20 @@ function CreateEvent() {
         }),
         headers: {
           'Content-Type': 'application/json',
-          "Authorization":"Bearer "+ localStorage.getItem("jwt")
+          "Authorization":"Bearer "+ localStorage.getItem("token")
         }
       })
-      const data = response.json()
+      const data = await response.json()
       console.log(data)
+      setTitle('')
+      setDesc('')
+      setDuration(0)
+      setCapacity(0)
+      setDoorTime('')
+      setEndTime('')
+      setLocation('')
+      setIsFree('')
+      setEventStatus('')
     }catch(e){
       console.log(e)
     }
@@ -42,28 +51,28 @@ function CreateEvent() {
   return (
     <form onSubmit={submitHandler}>
       <h2>Event</h2>
-      <label htmlFor='title'></label>
+      <label htmlFor='title'>Title</label>
       <input type="text" required value={title} onChange={e=>setTitle(e.target.value)}/>
       <label htmlFor='desc'>Description </label>
       <input type="text" required value={desc} onChange={e=>setDesc(e.target.value)}/>
       <label htmlFor='duration'>Duration</label>
       <input type="number" value={duration} onChange={e=>setDuration(e.target.value)} />
       <label htmlFor='capacity'>Capacity</label>
-      <input type="number" value={capacity} onChange={e=>setCapacity(e.target.value)}></input>
+      <input type="number" value={capacity} onChange={e=>setCapacity(e.target.value)} />
       <label htmlFor='doorTime'>Door Time</label>
       <input type="datetime-local" onChange={e=>setDoorTime(e.target.value)}/>
       <label htmlFor='endTime'>End Time</label>
       <input type="datetime-local"  onChange={e=>setEndTime(e.target.value)}/>
       <label htmlFor='location'>Address</label>
-      <input type="location" value={location} onChange={e=>setLocation(e.target.value)} />
-      <label htmlFor='isFree'></label>
+      <input type="location" value={location} onChange={e => setLocation(e.target.value)} />
+      <label htmlFor='isFree'>Free</label>
       <select name="isFree" onChange={(e) => setIsFree(e.target.value)}>
         <option value="true">True</option>
         <option value="false">False</option>
       </select>
       <label htmlFor='eventStatus'>Event Status</label>
-      <select>
-        <option value="comingSoon">Comming Soon</option>
+      <select onChange={e => setEventStatus(e.target.value)}>
+        <option value="comingSoon">Coming Soon</option>
         <option value="started">Started</option>
         <option value="ended">Ended</option>
       </select>

@@ -7,26 +7,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-// const APIdata = [
-//   {
-//       title:"Welcome to VIT",
-//       _id: "622d6d24fc53633fd8eb943c",
-//       description: "Ut quod est est quam fugit et. Tenetur sit magnam quis sed molestiae quo. Accusamus mollitia nesciunt saepe culpa voluptates distinctio id architecto. Asperiores harum eligendi voluptas voluptas et quaerat ad. Earum tenetur est minus impedit non voluptas maxime. Ut et et sed facilis consequatur doloremque.",
-//       organizer: "622cd8a2f750db01c68bbe44",
-//       doorTime: 1647144228,
-//       duration: 6,
-//       endTime: 1647144228,
-//       eventStatus: "started",
-//       location: "681 Lelia Rapid",
-//       maximumAttendeeCapacity: 200,
-//       isAccessibleForFree: true,
-//       createdAt: "2022-03-13T04:03:48.561Z",
-//       updatedAt: "2022-03-13T04:03:48.561Z",
-//   }
-// ]
-
-
-
 function Events() {
 
   const [APIdata, setAPIdata] = useState([])
@@ -65,7 +45,7 @@ function Events() {
               key={data._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}              
               >
-                <TableCell component="th" scope="row">{data.title}</TableCell>
+                <TableCell align="center">{data.title}</TableCell>
                 <TableCell align="center">{data.description}</TableCell>
                 <TableCell align="center">{data.duration}</TableCell>
                 <TableCell align="center">{data.maximumAttendeeCapacity}</TableCell>

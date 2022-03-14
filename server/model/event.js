@@ -12,13 +12,13 @@ const EventSchema = new mongoose.Schema({
     ref: 'User'
   },
   doorTime: {
-    type: Number
+    type: String
   },
   duration: {
     type: Number
   },
   endTime: {
-    type: Number
+    type: String
   },
   eventStatus:{
     type: String
@@ -30,8 +30,7 @@ const EventSchema = new mongoose.Schema({
     type: Number
   },
   isAccessibleForFree:{
-    type: Boolean,
-    required: true
+    type: String
   }
 }, 
 {
